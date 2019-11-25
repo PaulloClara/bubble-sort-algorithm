@@ -33,12 +33,17 @@ void sort(int *array, size_t i, size_t j) {
   sort(array, i, ++j);
 }
 
-void bubble_sort(int *array, size_t i) {
+void bubble_sort(int *array, size_t array_size, size_t i) {
   if (i <= 0) return;
   printf("\ni%d: ", i);
 
   sort(array, i, 0);
-  bubble_sort(array, --i);
+
+  printf("\n\n\t[");
+  show(array, array_size, 0);
+  printf("\b\b]\n\n");
+
+  bubble_sort(array, array_size, --i);
 }
 
 int main(int argc, char *argv[]) {
@@ -49,11 +54,7 @@ int main(int argc, char *argv[]) {
 
   load(argv, array, array_size);
 
-  bubble_sort(array, array_size - 1);
-
-  printf("\n\n\t[");
-  show(array, array_size, 0);
-  printf("\b\b]\n\n");
+  bubble_sort(array, array_size, array_size - 1);
 
   return 0;
 }
