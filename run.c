@@ -6,14 +6,14 @@ int error(char *error_msg) {
   return 1;
 }
 
-void load(const char *input_array[], int *array, size_t array_size) {
+void load(char *input_array[], int *array, size_t array_size) {
   array[array_size-1] = atoi(input_array[array_size]);
 
   if (array_size == 1) return;
   load(input_array, array, --array_size);
 }
 
-void show(int *array, const size_t array_size, size_t i) {
+void show(int *array, size_t array_size, size_t i) {
   printf("%d, ", array[i++]);
 
   if (i >= array_size) return;
@@ -41,10 +41,10 @@ void bubble_sort(int *array, size_t i) {
   bubble_sort(array, --i);
 }
 
-int main(const int argc, const char *argv[]) {
+int main(int argc, char *argv[]) {
   if (argc < 3) return error("Array not found!");
 
-  const size_t array_size = argc - 1;
+  size_t array_size = argc - 1;
   int array[array_size];
 
   load(argv, array, array_size);
